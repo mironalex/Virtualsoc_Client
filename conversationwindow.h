@@ -13,15 +13,19 @@ class conversationWindow : public QDialog
     Q_OBJECT
 
 public:
+
+    QTimer * timer;
     std::string username,partner;
     void showEvent(QShowEvent * event);
     int socketDescriptor;
     explicit conversationWindow(QWidget *parent = 0);
     ~conversationWindow();
+    //void refreshPosts();
+
+public slots:
+    void refreshPosts();
 
 private slots:
-    void on_pushButton_clicked();
-
     void on_enterButton_clicked();
 
 private:
