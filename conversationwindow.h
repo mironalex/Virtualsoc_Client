@@ -2,7 +2,7 @@
 #define CONVERSATIONWINDOW_H
 
 #include <QDialog>
-#include <string.h>
+#include <string>;
 
 namespace Ui {
 class conversationWindow;
@@ -13,13 +13,16 @@ class conversationWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit conversationWindow(QWidget *parent = 0);
-    std::string username;
+    std::string username,partner;
+    void showEvent(QShowEvent * event);
     int socketDescriptor;
+    explicit conversationWindow(QWidget *parent = 0);
     ~conversationWindow();
 
 private slots:
-    void on_postBox_destroyed();
+    void on_pushButton_clicked();
+
+    void on_enterButton_clicked();
 
 private:
     Ui::conversationWindow *ui;

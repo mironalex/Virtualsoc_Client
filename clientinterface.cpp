@@ -1,6 +1,7 @@
 #include "clientinterface.h"
 #include "ui_clientinterface.h"
 #include "utilities.h"
+#include "conversationwindow.h"
 #include "friendmanager.h"
 #include <string>
 #include <cstdlib>
@@ -68,6 +69,7 @@ void clientInterface::showEvent(QShowEvent * event){
             friendSize = readInt(this->socketDescriptor);
             friendUser = new char[friendSize+1];
             read(this->socketDescriptor,friendUser,friendSize);
+            friendUser[friendSize] = 0;
             ui->friendList->addItem(friendUser);
             delete[] friendUser;
         }
@@ -123,4 +125,14 @@ void clientInterface::on_manage_friendsButton_clicked()
     managerUI.username = username;
     managerUI.setModal(true);
     managerUI.exec();
+}
+
+void clientInterface::on_friendList_doubleClicked()
+{
+    string user = ui->friendList->currentItem()->text().toStdString();
+    conversationWindow newConversation;
+    newConversation.socketDescriptor = this->socketDescriptor;
+    newConversation.username = username;
+    newConversation.partner = user;
+    newConversation.exec();
 }

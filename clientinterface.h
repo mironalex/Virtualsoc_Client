@@ -31,6 +31,8 @@ private slots:
 
     void on_manage_friendsButton_clicked();
 
+    void on_friendList_doubleClicked();
+
 private:
     Ui::clientInterface *ui;
 };
