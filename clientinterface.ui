@@ -18,7 +18,7 @@
     <rect>
      <x>330</x>
      <y>170</y>
-     <width>531</width>
+     <width>541</width>
      <height>471</height>
     </rect>
    </property>
@@ -34,6 +34,12 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="tabStopWidth">
+    <number>20</number>
+   </property>
+   <property name="acceptRichText">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="line">
@@ -104,8 +110,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLineEdit" name="friendAddBox">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>610</y>
+     <x>1010</x>
+     <y>620</y>
      <width>171</width>
      <height>22</height>
     </rect>
@@ -118,8 +124,8 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>960</x>
-     <y>610</y>
-     <width>31</width>
+     <y>620</y>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -131,7 +137,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>1090</x>
-     <y>640</y>
+     <y>650</y>
      <width>80</width>
      <height>22</height>
     </rect>
@@ -195,7 +201,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>960</x>
-     <y>640</y>
+     <y>650</y>
      <width>121</width>
      <height>22</height>
     </rect>
@@ -220,7 +226,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>965</x>
-     <y>170</y>
+     <y>180</y>
      <width>211</width>
      <height>401</height>
     </rect>
@@ -249,14 +255,83 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="manage_friendsButton">
    <property name="geometry">
     <rect>
-     <x>1020</x>
-     <y>580</y>
-     <width>101</width>
+     <x>960</x>
+     <y>590</y>
+     <width>221</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string>Manage Friends</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="convList">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>211</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="textElideMode">
+    <enum>Qt::ElideLeft</enum>
+   </property>
+   <property name="isWrapping" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="viewMode">
+    <enum>QListView::ListMode</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>160</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Conversation List:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>160</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Friend List:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="manage_conversationsButton">
+   <property name="geometry">
+    <rect>
+     <x>29</x>
+     <y>590</y>
+     <width>211</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Manage Conversations</string>
    </property>
   </widget>
  </widget>

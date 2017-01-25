@@ -22,6 +22,7 @@ clientInterface::~clientInterface()
 void clientInterface::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        //Getting and displaying the posts of our friends
         sendMessage(this->socketDescriptor,"GET");
         string packet = this->username;
         packet += ":0:10:";
@@ -35,24 +36,40 @@ void clientInterface::showEvent(QShowEvent * event){
             char * post, * author, *date;
             int postSize, authorSize,dateSize;
             authorSize = readInt(this->socketDescriptor);
-            author = new char[authorSize+2];
+            author = new char[authorSize+1];
             read(this->socketDescriptor,author,authorSize);
             postSize = readInt(this->socketDescriptor);
-            post = new char[postSize+1];
-            read(this->socketDescriptor,post,postSize);
+            post = new char[postSize+3];
+            read(this->socketDescriptor,post+1,postSize);
             date = new char[dateSize+1];
             dateSize = readInt(this->socketDescriptor);
             read(this->socketDescriptor,date,dateSize);
-            date[dateSize] = 0;
-            post[postSize] = 0;
-            author[authorSize] =':';
-            author[authorSize+1]=0;
+            date[dateSize] = post[postSize+2] = author[authorSize] = 0;
+            post[postSize+1] = '\n'; post[0] = '\t';
             string header = author; header += " posted on: ";
             header.append(date);
             ui->postBrowser->append(header.c_str());
-            ui->postBrowser->append('\t'+post);
+            ui->postBrowser->append(post);
             delete[] post;
             delete[] author;
+            delete[] date;
+        }
+        ui->postBrowser->moveCursor(QTextCursor::Start,QTextCursor::MoveAnchor);
+        //Populating the friend list
+
+        sendMessage(this->socketDescriptor,"GFL");
+        x = readInt(this->socketDescriptor);
+        char friendCount[100];
+        read(this->socketDescriptor,friendCount,x);
+        n = atoi(friendCount);
+        for(int i = 0; i < n; i++){
+            char * friendUser;
+            int friendSize;
+            friendSize = readInt(this->socketDescriptor);
+            friendUser = new char[friendSize+1];
+            read(this->socketDescriptor,friendUser,friendSize);
+            ui->friendList->addItem(friendUser);
+            delete[] friendUser;
         }
     }
 }
@@ -91,6 +108,7 @@ void clientInterface::on_addFriendButton_clicked()
         bufferSize = readInt(this->socketDescriptor);
         read(this->socketDescriptor,response,bufferSize);
         ui->friendAddBox->clear();
+        if(strstr(response,"Successful")!=0) ui->friendList->addItem(befriend.c_str());
     }
 }
 
