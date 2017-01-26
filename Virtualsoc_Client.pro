@@ -23,9 +23,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp \
+    clientinterface.cpp \
+    registerwindow.cpp \
+    utilities.cpp \
+    friendmanager.cpp \
+    conversationwindow.cpp \
+    group_conversationwindow.cpp \
+    conversation_manager.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    client.h \
+    mainwindow.h \
+    clientinterface.h \
+    registerwindow.h \
+    utilities.h \
+    friendmanager.h \
+    conversationwindow.h \
+    group_conversationwindow.h \
+    conversation_manager.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    mainwindow.ui \
+    clientinterface.ui \
+    registerwindow.ui \
+    friendmanager.ui \
+    conversationwindow.ui \
+    group_conversationwindow.ui \
+    conversation_manager.ui

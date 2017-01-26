@@ -2,7 +2,7 @@
 #define CONVERSATIONWINDOW_H
 
 #include <QDialog>
-#include <string>;
+#include <string>
 
 namespace Ui {
 class conversationWindow;

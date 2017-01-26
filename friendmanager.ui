@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>421</width>
-    <height>237</height>
+    <height>265</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -85,7 +85,7 @@
     <string>Friend List:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="user">
+  <widget class="QLineEdit" name="userBox">
    <property name="geometry">
     <rect>
      <x>82</x>
@@ -133,6 +133,31 @@
    <property name="text">
     <string>Accept</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="friendType">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>230</y>
+     <width>181</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Acquaintance</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Friend</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Family</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

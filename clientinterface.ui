@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>170</y>
+     <y>200</y>
      <width>541</width>
      <height>471</height>
     </rect>
@@ -144,19 +144,6 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Add Friend</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>650</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Get More</string>
    </property>
   </widget>
   <widget class="QComboBox" name="postType">
@@ -294,6 +281,11 @@ p, li { white-space: pre-wrap; }
    <property name="viewMode">
     <enum>QListView::ListMode</enum>
    </property>
+   <item>
+    <property name="text">
+     <string>test</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -332,6 +324,42 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Manage Conversations</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="recentPostsButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>170</y>
+     <width>91</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Recent Posts</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="go_to_ProfileButton">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>170</y>
+     <width>80</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Go To:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="go_to_inputBox">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>170</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>
