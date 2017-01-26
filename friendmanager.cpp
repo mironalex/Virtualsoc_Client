@@ -104,30 +104,33 @@ void friendManager::on_friendList_clicked(const QModelIndex &index)
 void friendManager::on_Accept_clicked()
 {
     std::string user = ui->userBox->text().toStdString();
-    char friendType = ui->friendType->currentIndex() + '0';
-    sendMessage(this->socketDescriptor,"ADD");
-    std::string request;
-    request += friendType;
-    request += ":" + user +":";
-    sendMessage(this->socketDescriptor,request);
-    char response[1000];
-    int bufferSize;
-    bufferSize = readInt(this->socketDescriptor);
-    read(this->socketDescriptor,response,bufferSize);
-    ui->friendList->clear();
-    ui->requestList->clear();
-    ui->userBox->clear();
-    if(strstr(response,"Successful")!=0) this->populateFriendLists();
-
+        if(user.length()>0){
+        char friendType = ui->friendType->currentIndex() + '0';
+        sendMessage(this->socketDescriptor,"ADD");
+        std::string request;
+        request += friendType;
+        request += ":" + user +":";
+        sendMessage(this->socketDescriptor,request);
+        char response[1000];
+        int bufferSize;
+        bufferSize = readInt(this->socketDescriptor);
+        read(this->socketDescriptor,response,bufferSize);
+        ui->friendList->clear();
+        ui->requestList->clear();
+        ui->userBox->clear();
+        if(strstr(response,"Successful")!=0) this->populateFriendLists();
+    }
 }
 
 void friendManager::on_deleteButton_clicked()
 {
     std::string user = ui->userBox->text().toStdString();
-    sendMessage(socketDescriptor,"DEL");
-    sendMessage(socketDescriptor,user);
-    ui->friendList->clear();
-    ui->requestList->clear();
-    ui->userBox->clear();
-    this->populateFriendLists();
+    if(user.length()>0){
+        sendMessage(socketDescriptor,"DEL");
+        sendMessage(socketDescriptor,user);
+        ui->friendList->clear();
+        ui->requestList->clear();
+        ui->userBox->clear();
+        this->populateFriendLists();
+    }
 }

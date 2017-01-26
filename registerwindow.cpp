@@ -32,7 +32,11 @@ void registerWindow::on_registerButton_clicked()
     user = ui->userField->text().toStdString();
     pass1 = ui->passField->text().toStdString();
     pass2 = ui->passField_2->text().toStdString();
-    if(pass1 != pass2) ui->labelStatus->setText("Status: Passwords do not match.");
+    if(pass1 != pass2){
+        ui->labelStatus->setText("Status: Passwords do not match.");
+        return;
+    }
     sendMessage(socketDescriptor,"REG");
-    sendMessage(socketDescriptor,user+':'+pass1+':');
+    sendMessage(socketDescriptor,user);
+    sendMessage(socketDescriptor,pass1);
 }

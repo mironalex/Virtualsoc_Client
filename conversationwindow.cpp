@@ -60,12 +60,14 @@ void conversationWindow::showEvent(QShowEvent * event){
 void conversationWindow::on_enterButton_clicked()
 {
     //send whatever's in the input text box and send it to the server
-    sendMessage(socketDescriptor,"SPM");
-    sendMessage(socketDescriptor,partner);
-    std::string message = ui->inputBox->toPlainText().toStdString();
-    sendMessage(socketDescriptor,message);
-    ui->inputBox->clear();
 
+    std::string message = ui->inputBox->toPlainText().toStdString();
+    if(message.length()>0){
+        sendMessage(socketDescriptor,"SPM");
+        sendMessage(socketDescriptor,partner);
+        sendMessage(socketDescriptor,message);
+        ui->inputBox->clear();
+    }
 }
 
 

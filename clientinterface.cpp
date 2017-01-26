@@ -240,6 +240,9 @@ void clientInterface::on_go_to_ProfileButton_clicked()
 {
     std::string user = ui->go_to_inputBox->text().toStdString();
     ui->go_to_inputBox->clear();
+    if(user.length() <= 3){
+        return;
+    }
     sendMessage(this->socketDescriptor,"GET");
     string packet = user;
     packet += ":0:10:";

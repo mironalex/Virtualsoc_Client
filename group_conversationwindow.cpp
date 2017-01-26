@@ -86,19 +86,23 @@ void group_conversationwindow::showEvent(QShowEvent * event){
 
 void group_conversationwindow::on_sendButton_clicked()
 {
-    sendMessage(socketDescriptor,"SGM");
     std::string message = ui->inputBox->toPlainText().toStdString();
-    ui->inputBox->clear();
-    sendMessage(socketDescriptor,groupname);
-    sendMessage(socketDescriptor,message);
+    if(message.length()>0){
+        ui->inputBox->clear();
+        sendMessage(socketDescriptor,"SGM");
+        sendMessage(socketDescriptor,groupname);
+        sendMessage(socketDescriptor,message);
+    }
 }
 
 void group_conversationwindow::on_addButton_clicked()
 {
     std::string user = ui->userBox->text().toStdString();
-    ui->userBox->clear();
-    sendMessage(socketDescriptor,"ITG");
-    sendMessage(socketDescriptor,user);
-    sendMessage(socketDescriptor,groupname);
-    this->getParticipants();
+    if(user.length()>0){
+        ui->userBox->clear();
+        sendMessage(socketDescriptor,"ITG");
+        sendMessage(socketDescriptor,user);
+        sendMessage(socketDescriptor,groupname);
+        this->getParticipants();
+    }
 }

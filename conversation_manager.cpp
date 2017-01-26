@@ -52,11 +52,13 @@ void conversation_manager::getConversationList(){
 void conversation_manager::on_createButton_clicked()
 {
     std::string groupName =ui->inputBox->text().toStdString();
-    ui->inputBox->clear();
-    sendMessage(socketDescriptor,"ITG");
-    sendMessage(socketDescriptor,username);
-    sendMessage(socketDescriptor,groupName);
-    getConversationList();
+    if(groupName.length()>0){
+        ui->inputBox->clear();
+        sendMessage(socketDescriptor,"ITG");
+        sendMessage(socketDescriptor,username);
+        sendMessage(socketDescriptor,groupName);
+        getConversationList();
+    }
 }
 
 void conversation_manager::on_conversationList_itemClicked()

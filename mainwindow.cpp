@@ -31,21 +31,24 @@ void MainWindow::on_loginButton_clicked()
 {
     string password = ui->passField->text().toStdString();
     string username = ui->userField->text().toStdString();
-    sendMessage(sd,"LOG");
-    sendMessage(sd,username+':'+password+':');
-    int size = readInt(sd);
-    char * message = new char[size+1];
-    read(sd,message,size);
-    printf("%s",message);
-    if(strstr(message,"Successful")){
-        this->hide();
-        clientInterface clientUI;
-        clientUI.socketDescriptor = this->sd;
-        clientUI.username = username;
-        clientUI.setModal(true);
-        clientUI.exec();
+    if(username.length() * password.length() > 0){
+        sendMessage(sd,"LOG");
+        sendMessage(sd,username);
+        sendMessage(sd,password);
+        int size = readInt(sd);
+        char * message = new char[size+1];
+        read(sd,message,size);
+        printf("%s",message);
+        if(strstr(message,"Successful")){
+            this->hide();
+            clientInterface clientUI;
+            clientUI.socketDescriptor = this->sd;
+            clientUI.username = username;
+            clientUI.setModal(true);
+            clientUI.exec();
+        }
+        delete[] message;
     }
-    delete[] message;
 }
 
 void MainWindow::on_passFIeld_returnPressed()
