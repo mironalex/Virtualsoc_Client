@@ -22,6 +22,7 @@ public:
     void getRecentPosts();
     void getFriendList();
     void getConversationList();
+
     ~clientInterface();
 
 private slots:

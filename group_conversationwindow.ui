@@ -59,7 +59,7 @@
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="QListView" name="participantsList">
+  <widget class="QListWidget" name="participantsList">
    <property name="geometry">
     <rect>
      <x>410</x>

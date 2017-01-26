@@ -17,7 +17,11 @@ conversation_manager::~conversation_manager()
 
 void conversation_manager::on_leaveButton_clicked()
 {
+    std::string groupName = ui->inputBox->text().toStdString();
     ui->inputBox->clear();
+    sendMessage(socketDescriptor,"LGR");
+    sendMessage(socketDescriptor,groupName);
+    getConversationList();
 }
 
 void conversation_manager::showEvent(QShowEvent * event){
@@ -26,6 +30,7 @@ void conversation_manager::showEvent(QShowEvent * event){
         getConversationList();
     }
 }
+
 void conversation_manager::getConversationList(){
     sendMessage(socketDescriptor,"GGL");
     int x = readInt(this->socketDescriptor);
@@ -47,10 +52,15 @@ void conversation_manager::getConversationList(){
 void conversation_manager::on_createButton_clicked()
 {
     std::string groupName =ui->inputBox->text().toStdString();
-
+    ui->inputBox->clear();
     sendMessage(socketDescriptor,"ITG");
     sendMessage(socketDescriptor,username);
     sendMessage(socketDescriptor,groupName);
-
     getConversationList();
+}
+
+void conversation_manager::on_conversationList_itemClicked()
+{
+    std::string groupName = ui->conversationList->currentItem()->text().toStdString();
+    ui->inputBox->setText(groupName.c_str());
 }

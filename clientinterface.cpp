@@ -77,6 +77,24 @@ void clientInterface::getFriendList(){
     }
 }
 
+void clientInterface::getConversationList(){
+    sendMessage(socketDescriptor,"GGL");
+    int x = readInt(this->socketDescriptor);
+    char groupCount[100];
+    read(this->socketDescriptor,groupCount,x);
+    int n = atoi(groupCount);
+    ui->convList->clear();
+    for(int i = 0; i < n; i++){
+        char * groupName;
+        int groupSize = readInt(socketDescriptor);
+        groupName = new char[groupSize+1];
+        read(socketDescriptor,groupName,groupSize);
+        groupName[groupSize] = 0;
+        ui->convList->addItem(groupName);
+        delete[] groupName;
+    }
+}
+
 void clientInterface::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
@@ -87,6 +105,9 @@ void clientInterface::showEvent(QShowEvent * event){
         //Populating the friend list
         this->getFriendList();
 
+
+        //Populating the conversation list
+        this->getConversationList();
     }
 }
 

@@ -26,6 +26,8 @@ private slots:
 
     void on_createButton_clicked();
 
+    void on_conversationList_itemClicked();
+
 private:
     Ui::conversation_manager *ui;
 };
