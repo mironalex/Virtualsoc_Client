@@ -25,9 +25,9 @@ public:
 private slots:
     void on_Accept_clicked();
 
-    void on_requestList_itemClicked(QListWidgetItem *item);
+    void on_requestList_itemClicked();
 
-    void on_friendList_clicked(const QModelIndex &index);
+    void on_friendList_clicked();
 
     void on_deleteButton_clicked();
 

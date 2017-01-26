@@ -21,10 +21,12 @@ conversationWindow::~conversationWindow()
 void conversationWindow::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        this->setWindowTitle(partner.c_str());
         sendMessage(socketDescriptor,"GPM");
         sendMessage(socketDescriptor,partner);
         int countSize;  char count[100];
         countSize = readInt(socketDescriptor);
+        count[countSize] = 0;
         read(socketDescriptor,count,countSize);
         int n = atoi(count);
         for(int i = 0; i < n; i++){
@@ -77,6 +79,7 @@ void conversationWindow::refreshPosts(){
     sendMessage(socketDescriptor,partner);
     int countSize;  char count[100];
     countSize = readInt(socketDescriptor);
+    count[countSize] = 0;
     read(socketDescriptor,count,countSize);
     int n = atoi(count);
     for(int i = 0; i < n; i++){

@@ -30,6 +30,7 @@ void clientInterface::getRecentPosts(){
     int x;
     char messageCount[100];
     x = readInt(this->socketDescriptor);
+    messageCount[x] = 0;
     read(this->socketDescriptor,messageCount,x);
     ui->postBrowser->clear();
     int n = atoi(messageCount);
@@ -63,6 +64,7 @@ void clientInterface::getFriendList(){
     int x = readInt(this->socketDescriptor);
     char friendCount[100];
     read(this->socketDescriptor,friendCount,x);
+    friendCount[x] = 0;
     int n = atoi(friendCount);
     ui->friendList->clear();
     for(int i = 0; i < n; i++){
@@ -82,6 +84,7 @@ void clientInterface::getConversationList(){
     int x = readInt(this->socketDescriptor);
     char groupCount[100];
     read(this->socketDescriptor,groupCount,x);
+    groupCount[x] = 0;
     int n = atoi(groupCount);
     ui->convList->clear();
     for(int i = 0; i < n; i++){
@@ -98,6 +101,7 @@ void clientInterface::getConversationList(){
 void clientInterface::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        this->setWindowTitle("Virtualsoc");
         //Getting and displaying the posts of our friends
         this->getRecentPosts();
 
@@ -106,8 +110,12 @@ void clientInterface::showEvent(QShowEvent * event){
         this->getFriendList();
 
 
+
+
         //Populating the conversation list
         this->getConversationList();
+
+
     }
 }
 
@@ -179,7 +187,7 @@ void clientInterface::on_manage_conversationsButton_clicked()
     conv_manager.exec();
 }
 
-void clientInterface::on_convList_doubleClicked(const QModelIndex &index)
+void clientInterface::on_convList_doubleClicked()
 {
     string groupname = ui->convList->currentItem()->text().toStdString();
     group_conversationwindow newGroupConversation;
@@ -208,6 +216,7 @@ void clientInterface::on_publicPostsButton_clicked()
     int x;
     char messageCount[100];
     x = readInt(this->socketDescriptor);
+    messageCount[x] = 0;
     read(this->socketDescriptor,messageCount,x);
     ui->postBrowser->clear();
     int n = atoi(messageCount);
@@ -243,6 +252,7 @@ void clientInterface::on_go_to_ProfileButton_clicked()
     if(user.length() <= 3){
         return;
     }
+    ui->postBrowser->clear();
     sendMessage(this->socketDescriptor,"GET");
     string packet = user;
     packet += ":0:10:";
@@ -251,7 +261,7 @@ void clientInterface::on_go_to_ProfileButton_clicked()
     char messageCount[100];
     x = readInt(this->socketDescriptor);
     read(this->socketDescriptor,messageCount,x);
-    ui->postBrowser->clear();
+    messageCount[x]=0;
     int n = atoi(messageCount);
     for(int i = 0; i < n; i++){
         char * post, * author, *date;

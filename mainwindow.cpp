@@ -67,7 +67,7 @@ void MainWindow::on_registerButton_clicked()
 void MainWindow::on_guestButton_clicked()
 {
     guestSession guest;
-    this->hide();
+
     guest.socketDescriptor = sd;
     guest.setModal(true);
     guest.exec();

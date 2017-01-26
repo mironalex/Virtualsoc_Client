@@ -36,7 +36,7 @@ private slots:
 
     void on_manage_conversationsButton_clicked();
 
-    void on_convList_doubleClicked(const QModelIndex &index);
+    void on_convList_doubleClicked();
 
     void on_friendList_clicked();
 

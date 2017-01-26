@@ -20,6 +20,7 @@ void friendManager::populateFriendLists(){
     int x = readInt(this->socketDescriptor);
     char friendCount[100];
     read(this->socketDescriptor,friendCount,x);
+    friendCount[x] = 0;
     int n = atoi(friendCount);
     for(int i = 0; i < n; i++){
         char * friendUser;
@@ -51,12 +52,14 @@ void friendManager::populateFriendLists(){
 void friendManager::showEvent(QShowEvent *event){
     QWidget::showEvent(event);
     if(event->spontaneous() == false){
+        this->setWindowTitle("Friend Manager");
         //Populate the friend request list
 
         sendMessage(this->socketDescriptor,"GFR");
         int x = readInt(this->socketDescriptor);
         char friendCount[100];
         read(this->socketDescriptor,friendCount,x);
+        friendCount[x] = 0;
         int n = atoi(friendCount);
         for(int i = 0; i < n; i++){
             char * friendUser;
@@ -89,13 +92,13 @@ void friendManager::showEvent(QShowEvent *event){
     }
 }
 
-void friendManager::on_requestList_itemClicked(QListWidgetItem *item)
+void friendManager::on_requestList_itemClicked()
 {
     std::string user = ui->requestList->currentItem()->text().toStdString();
     ui->userBox->setText(user.c_str());
 }
 
-void friendManager::on_friendList_clicked(const QModelIndex &index)
+void friendManager::on_friendList_clicked()
 {
     std::string user = ui->friendList->currentItem()->text().toStdString();
     ui->userBox->setText(user.c_str());

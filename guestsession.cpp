@@ -18,12 +18,14 @@ guestSession::~guestSession()
 void guestSession::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        this->setWindowTitle("Virtualsoc Guest Session");
         sendMessage(socketDescriptor,"GET");
         std::string request = "GUEST:0:100:";
         sendMessage(socketDescriptor,request.c_str());
         int x;
         char messageCount[100];
         x = readInt(this->socketDescriptor);
+        messageCount[x] = 0;
         read(this->socketDescriptor,messageCount,x);
         ui->postBrowser->clear();
         int n = atoi(messageCount);

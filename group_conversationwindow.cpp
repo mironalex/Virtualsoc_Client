@@ -26,6 +26,7 @@ void group_conversationwindow::getParticipants(){
     int x = readInt(this->socketDescriptor);
     char participantsCount[100];
     read(socketDescriptor,participantsCount,x);
+    participantsCount[x] = 0;
     int n = atoi(participantsCount);
     ui->participantsList->clear();
     for(int i = 0; i < n; i++){
@@ -46,6 +47,7 @@ void group_conversationwindow::getMessages(){
     int x = readInt(this->socketDescriptor);
     char messageCount[100];
     read(this->socketDescriptor,messageCount,x);
+    messageCount[x] = 0;
     int n = atoi(messageCount);
     ui->messageBrowser->clear();
     for(int i = 0; i < n; i++){
@@ -79,6 +81,7 @@ void group_conversationwindow::getMessages(){
 void group_conversationwindow::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        this->setWindowTitle(groupname.c_str());
         this->getMessages();
         this->getParticipants();
     }

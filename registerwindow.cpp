@@ -8,6 +8,7 @@ registerWindow::registerWindow(QWidget *parent) :
     ui(new Ui::registerWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Virtualsoc Register");
     if(socketDescriptor <= 0){
         ui->labelStatus->setText("Status: Cannot connect to the server.");
     }
@@ -39,4 +40,7 @@ void registerWindow::on_registerButton_clicked()
     sendMessage(socketDescriptor,"REG");
     sendMessage(socketDescriptor,user);
     sendMessage(socketDescriptor,pass1);
+    ui->userField->clear();
+    ui->passField->clear();
+    ui->passField_2->clear();
 }

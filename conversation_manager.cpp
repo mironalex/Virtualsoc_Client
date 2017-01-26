@@ -27,6 +27,7 @@ void conversation_manager::on_leaveButton_clicked()
 void conversation_manager::showEvent(QShowEvent * event){
     QWidget::showEvent( event );
     if(event->spontaneous() == false){
+        this->setWindowTitle("Conversation Manager");
         getConversationList();
     }
 }
@@ -36,6 +37,7 @@ void conversation_manager::getConversationList(){
     int x = readInt(this->socketDescriptor);
     char groupCount[100];
     read(this->socketDescriptor,groupCount,x);
+    groupCount[x] = 0;
     int n = atoi(groupCount);
     ui->conversationList->clear();
     for(int i = 0; i < n; i++){
