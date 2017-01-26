@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     friendmanager.cpp \
     conversationwindow.cpp \
     group_conversationwindow.cpp \
-    conversation_manager.cpp
+    conversation_manager.cpp \
+    guestsession.cpp
 
 HEADERS  += \
     client.h \
@@ -42,7 +43,8 @@ HEADERS  += \
     friendmanager.h \
     conversationwindow.h \
     group_conversationwindow.h \
-    conversation_manager.h
+    conversation_manager.h \
+    guestsession.h
 
 FORMS    += \
     mainwindow.ui \
@@ -51,4 +53,5 @@ FORMS    += \
     friendmanager.ui \
     conversationwindow.ui \
     group_conversationwindow.ui \
-    conversation_manager.ui
+    conversation_manager.ui \
+    guestsession.ui

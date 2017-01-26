@@ -9,7 +9,7 @@
 #include "clientinterface.h"
 #include "registerwindow.h"
 #include "utilities.h"
-
+#include "guestsession.h"
 
 using namespace std;
 
@@ -59,4 +59,13 @@ void MainWindow::on_registerButton_clicked()
     registerForm.socketDescriptor = this->sd;
     registerForm.setModal(true);
     registerForm.exec();
+}
+
+void MainWindow::on_guestButton_clicked()
+{
+    guestSession guest;
+    this->hide();
+    guest.socketDescriptor = sd;
+    guest.setModal(true);
+    guest.exec();
 }

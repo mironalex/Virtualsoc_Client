@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>244</width>
-    <height>168</height>
+    <height>197</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,6 +90,19 @@
     </property>
     <property name="text">
      <string>Register</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="guestButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>221</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Guest Session</string>
     </property>
    </widget>
   </widget>
