@@ -40,6 +40,12 @@ private slots:
 
     void on_friendList_clicked();
 
+    void on_recentPostsButton_clicked();
+
+    void on_publicPostsButton_clicked();
+
+    void on_go_to_ProfileButton_clicked();
+
 private:
     Ui::clientInterface *ui;
 };
