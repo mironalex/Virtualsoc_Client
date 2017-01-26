@@ -15,7 +15,7 @@
 using namespace std;
 
 #define PORT 1337
-#define ADDRESS "192.168.100.8"
+#define ADDRESS "127.0.0.1"
 
 /* codul de eroare returnat de anumite apeluri */
 extern int errno;

@@ -36,6 +36,7 @@ void group_conversationwindow::getParticipants(){
         user[userSize] = 0;
 
         ui->participantsList->addItem(user);
+        delete[] user;
     }
 }
 
@@ -69,6 +70,9 @@ void group_conversationwindow::getMessages(){
 
         ui->messageBrowser->append(header.c_str());
         ui->messageBrowser->append(message);
+        delete[] message;
+        delete[] author;
+        delete[] date;
     }
 }
 

@@ -50,6 +50,9 @@ void conversationWindow::showEvent(QShowEvent * event){
 
             ui->pmBrowser->append(header.c_str());
             ui->pmBrowser->append(message);
+            delete[] sender;
+            delete[] message;
+            delete[] time;
         }
     }
 }
@@ -97,5 +100,8 @@ void conversationWindow::refreshPosts(){
 
         ui->pmBrowser->append(header.c_str());
         ui->pmBrowser->append(message);
+        delete[] sender;
+        delete[] message;
+        delete[] time;
     }
 }

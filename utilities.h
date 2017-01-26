@@ -1,6 +1,7 @@
 #ifndef UTILITIES_H
 #define UTILITIES_H
 #include<unistd.h>
+#include <cstdio>
 #include <string.h>
 #include <string>
 

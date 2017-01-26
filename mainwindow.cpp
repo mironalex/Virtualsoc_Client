@@ -45,6 +45,7 @@ void MainWindow::on_loginButton_clicked()
         clientUI.setModal(true);
         clientUI.exec();
     }
+    delete[] message;
 }
 
 void MainWindow::on_passFIeld_returnPressed()
