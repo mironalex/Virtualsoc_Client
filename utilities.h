@@ -9,17 +9,17 @@
 #include <string>
 
 /**
- * @brief readInt a function that reads an integer from a file descriptor / socket
- * @param fd holds a file descriptor / socket
+ * @brief readInt a function that reads an integer from a socket
+ * @param sock holds a socket to the server
  * @return the integer that was read
  */
-int readInt (int fd);
+int readInt (int sock);
 
 /**
- * @brief sendMessage a function that sends a string to a socket / file descriptor
- * @param fd holds a file descriptor / socket
+ * @brief sendMessage a function that sends a string to a socket
+ * @param sock holds a socket to the server
  * @param message the message that will be sent.
  */
-void sendMessage(int fd, std::string message);
+void sendMessage(int sock, std::string message);
 
 #endif // UTILITIES_H

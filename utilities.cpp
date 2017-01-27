@@ -1,15 +1,15 @@
 #include "utilities.h"
 
-int readInt (int fd){
-    int x = 0;
+int readInt (int sock){
+    int value = 0;
     ssize_t size;
-    size = read(fd, &x, 4);
+    size = read(sock, &value, 4);
     if(size != 4) throw("Failed to read an int");
-    return x;
+    return value;
 }
 
-void sendMessage(int fd, std::string message){
+void sendMessage(int sock, std::string message){
     unsigned long messageSize = message.size();
-    if( write(fd, (char *)&messageSize, 4) != 4) throw("Failed to write message size");
-    dprintf(fd,"%s",message.c_str());
+    write(sock, (char *)&messageSize, 4);
+    dprintf(sock,"%s",message.c_str());
 }
