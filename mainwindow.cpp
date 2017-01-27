@@ -51,11 +51,6 @@ void MainWindow::on_loginButton_clicked()
     }
 }
 
-void MainWindow::on_passFIeld_returnPressed()
-{
-
-}
-
 void MainWindow::on_registerButton_clicked()
 {
     registerWindow registerForm;

@@ -1,3 +1,6 @@
+/**
+  * A simple class for the guest session interface.
+  */
 #ifndef GUESTSESSION_H
 #define GUESTSESSION_H
 
@@ -12,8 +15,12 @@ class guestSession : public QDialog
     Q_OBJECT
 
 public:
-    int socketDescriptor;
+    int socketDescriptor; /**< socket to the server */
     explicit guestSession(QWidget *parent = 0);
+    /**
+     * @brief showEvent a public function used to initialize the lists of the interface
+     * @param event a variable that describes events such as if the windows was drawn for the first time
+     */
     void showEvent(QShowEvent * event);
     ~guestSession();
 
